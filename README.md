@@ -1,7 +1,7 @@
 # Meteorite-Landings
 
 ## Purpose of this Application:
-===============================
+
 To visually display the size and location of every meteorite
 that has contacted earth.
 
