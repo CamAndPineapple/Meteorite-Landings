@@ -1,4 +1,6 @@
-// DEV::wepack.config
+/*
+** DEV::wepack.config
+*/
 
 var path = require('path');
 var webpack = require('webpack');

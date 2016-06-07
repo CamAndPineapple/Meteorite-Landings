@@ -1,10 +1,12 @@
-import React from 'react';
-import {Component} from 'react';
+import React, { Component } from 'react';
+
 import {FETCH_DATA} from '../actions/types';
 import MapStore from '../stores/MapStore';
 import dispatcher from '../dispatcher';
-import * as MapActions from '../actions/index';
+import * as ViewActions from '../actions/index';
 
+import FilterData from './FilterData';
+import MeteoriteGroup from './MeteoriteGroup';
 
 export default class App extends Component {
   constructor() {
@@ -12,7 +14,8 @@ export default class App extends Component {
     this.updateData = this.updateData.bind(this);
 
     this.state = {
-      meteorites: MapStore.getAll()
+      meteorites: MapStore.getAll(),
+      dataFields: MapStore.getDataFields()
     }
   }
 
@@ -24,7 +27,7 @@ export default class App extends Component {
   }
 
   fetchData() {
-    MapActions.fetchData();
+    ViewActions.fetchData();
   }
 
   componentWillUnmount() {
@@ -33,16 +36,20 @@ export default class App extends Component {
 
   updateData() {
     this.setState({
-      meteorites: MapStore.getAll()
+      meteorites: MapStore.getAll(),
+      dataFields: MapStore.getDataFields(),
     });
   }
 
   render() {
-
-    console.log("state", this.state.meteorites);
+    var { meteorites, dataFields } = this.state;
 
     return (
-      <div>Meteorite Landings</div>
+      <div>
+        <div>Meteorite Landings</div>
+        <FilterData dataFields={dataFields} />
+        <MeteoriteGroup meteorites={meteorites} />
+      </div>
     );
   }
 }
