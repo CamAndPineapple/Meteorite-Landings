@@ -5,6 +5,7 @@ import MapStore from '../stores/MapStore';
 import dispatcher from '../dispatcher';
 import * as ViewActions from '../actions/index';
 
+import DataMap from './DataMap';
 import FilterData from './FilterData';
 import MeteoriteGroup from './MeteoriteGroup';
 
@@ -38,12 +39,13 @@ export default class App extends Component {
 
   render() {
     var {dataFields, meteorites} = this.state;
-
+        //<FilterData dataFields={dataFields} />
+        //<MeteoriteGroup meteorites={meteorites} />
     return (
       <div>
         <div>Meteorite Landings</div>
-        <FilterData dataFields={dataFields} />
-        <MeteoriteGroup meteorites={meteorites} />
+        {meteorites.length === 0 ? <h1>loading..</h1> : <DataMap data={meteorites} />}
+
       </div>
     );
   }

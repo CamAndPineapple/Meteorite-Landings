@@ -17,10 +17,12 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "d3": "^3.5.17",
+    "datamaps": "^0.5.5",
     "flux": "^2.1.1",
     "lodash": "^3.10.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "topojson": "^1.6.26",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
