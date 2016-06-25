@@ -20,14 +20,9 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.fetchData();
-    // if change event was emitted, re-render component
-    MapStore.on('change', this.updateData);
-
-  }
-
-  fetchData() {
     ViewActions.fetchData();
+
+    MapStore.on('change', this.updateData);
   }
 
   componentWillUnmount() {
@@ -42,7 +37,7 @@ export default class App extends Component {
   }
 
   render() {
-    var { meteorites, dataFields } = this.state;
+    var {dataFields, meteorites} = this.state;
 
     return (
       <div>

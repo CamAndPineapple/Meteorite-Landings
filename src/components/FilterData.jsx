@@ -20,9 +20,16 @@ export default class FilterData extends Component {
   }
 
   onChange(e) {
+
     this.setState({
       value: e.target.value
     });
+
+    // if user clears input, re-fetch all original data
+    if (this.state.value.length === 0) {
+      ViewActions.fetchData();
+    }
+
   }
 
   onClick(e) {
@@ -33,7 +40,7 @@ export default class FilterData extends Component {
     if (this.props.dataFields.indexOf(input) === -1) {
         alert("that value doesn't exist in the dataset");
     } else {
-      ViewActions.filterData(input);
+      ViewActions.filterData(input, "meteorites");
     }
 
   }

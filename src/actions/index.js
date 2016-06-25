@@ -13,9 +13,10 @@ export function fetchData() {
   }).catch(err => console.log(err));
 }
 
-export function filterData(value) {
+export function filterData(value, dataType) {
     dispatcher.dispatch({
       type: FILTER_DATA,
+      dataType: dataType,
       payload: value
     });
 }

@@ -7,7 +7,7 @@ class MapStore extends EventEmitter {
   constructor() {
     super();
 
-    this.meteorites = [];
+      this.meteorites = [];
 
   }
 
@@ -17,9 +17,10 @@ class MapStore extends EventEmitter {
   }
 
   getDataFields() {
-    if (this.meteorites.length > 0) {
-      return Object.keys(this.meteorites.shift());
-    }
+    if (this.meteorites.length === 0) return [];
+
+    const dataFields = Object.keys(this.meteorites[0]);
+    return dataFields;
   }
 
   // pushes data into this.meteorites
@@ -28,11 +29,16 @@ class MapStore extends EventEmitter {
     this.emit('change');
   }
 
-  filterData(value) {
-    this.meteorites.filter(m => {
-      console.log("mvalue", m[value]);
-      return m[value];
+  filterData(value, dataType) {
+    if (!value) return [];
+
+    var data = this[dataType];
+    var filtered = data.filter(d => {
+      return d[value];
     });
+
+    this[dataType] = filtered;
+
     this.emit('change');
   }
 
@@ -40,8 +46,10 @@ class MapStore extends EventEmitter {
     switch(action.type) {
       case FETCH_DATA:
         this.addData(action.payload);
+        break;
       case FILTER_DATA:
-        this.filterData(action.payload);
+        this.filterData(action.payload, action.dataType);
+        break;
     }
   }
 }
