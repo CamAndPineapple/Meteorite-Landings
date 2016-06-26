@@ -20,14 +20,18 @@ export default class DataMap extends Component {
 
         var {data} = this.state;
 
+        var cleanedData = data.filter(d => {
+            return d.mass < 3000;
+        });
 
-        var createBubbles = data.map(d => {
+
+        var createBubbles = cleanedData.map(d => {
 
             var bubbleColors = ['red', 'green', 'blue', 'purple'];
 
             return {
                 name: d.name,
-                radius: d.mass/100000,
+                radius: d.mass/200,
                 city: d.name,
                 date: d.year,
                 latitude: d.reclat,
