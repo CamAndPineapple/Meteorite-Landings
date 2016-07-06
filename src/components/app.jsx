@@ -43,9 +43,10 @@ export default class App extends Component {
         //<MeteoriteGroup meteorites={meteorites} />
     return (
       <div>
-        <div>Meteorite Landings</div>
-        {meteorites.length === 0 ? <h1>loading..</h1> : <DataMap data={meteorites} />}
-
+        <div className="header">METEORITE LANDINGS</div>
+        <div className="content-container">
+          {meteorites.length === 0 ? <h1 className="loading">loading..</h1> : <DataMap data={meteorites} />}
+        </div>
       </div>
     );
   }
