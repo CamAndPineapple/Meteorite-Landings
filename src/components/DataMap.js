@@ -12,11 +12,12 @@ export default class DataMap extends Component {
         this.map = null;
         this.createBubbles = null;
         this.updateMapData = this.updateMapData.bind(this);
+        this.resetZoom = this.resetZoom.bind(this);
+        this.setZoom = this.setZoom.bind(this);
 
         this.state = {
             data: this.props.data
         };
-
     }
 
     componentDidMount () {
@@ -33,6 +34,7 @@ export default class DataMap extends Component {
             },
             responsive: true,
             done: function(datamap) {
+                datamap.svg.call(d3.behavior.zoom().on("zoom", () => comp.setZoom()));
                 comp.props.whenLoaded();
             }
         });
@@ -139,6 +141,18 @@ export default class DataMap extends Component {
         this.map.options.done(this.map);
     }
 
+    setZoom () {
+        let translate = d3.event.translate;
+        let scale = d3.event.scale;
+        this.map.svg.selectAll("g").attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+    }
+
+    resetZoom () {
+        let zoom = d3.behavior.zoom().translate([0,0]).scale(1);
+        this.map.svg.call(zoom.on("zoom", this.setZoom));
+        this.map.resize();
+    }
+
     render () {
         let {data} = this.state;
         
@@ -147,6 +161,7 @@ export default class DataMap extends Component {
         return (
             <div className="datamap-container">
                 <div className="datamap" ref={ref => this.mapNode = ref}/>
+                <button className="zoom-reset-btn" onClick={this.resetZoom}>Reset Zoom</button>
             </div>
         );
     }

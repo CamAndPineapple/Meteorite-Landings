@@ -73,6 +73,7 @@ $navy: #62629c;
     letter-spacing: 5px;
 }
 .datamap-container {
+    position: relative;
     background-color: $navy;
     border-radius: 5px;
     width: 100%;
@@ -136,6 +137,28 @@ $navy: #62629c;
     &:hover {
        transform: translate(10px);
        background-color: $red; 
+       color: white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.zoom-reset-btn {
+    padding: 10px;
+    border: 1px solid white;
+    color: white;
+    position: absolute;
+    background-color: transparent;
+    bottom: 12px;
+    right: 20px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+
+    &:hover {
+       background-color: $red; 
+       border: 1px solid $red;
        color: white;
     }
 
