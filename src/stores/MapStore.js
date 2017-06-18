@@ -8,11 +8,9 @@ class MapStore extends EventEmitter {
     super();
 
       this.meteorites = [];
-
   }
 
   getAll() {
-    // format: [{data}, {data}, {data}]
     return this.meteorites;
   }
 

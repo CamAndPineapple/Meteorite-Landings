@@ -20,6 +20,7 @@
     "datamaps": "^0.5.5",
     "flux": "^2.1.1",
     "lodash": "^3.10.1",
+    "rc-slider": "^8.0.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "topojson": "^1.6.26",
@@ -41,18 +42,21 @@
     "mocha": "^2.4.5",
     "moment": "^2.14.1",
     "node-sass": "^3.4.2",
+    "prop-types": "^15.5.10",
     "react-addons-test-utils": "^15.0.1",
+    "react-resizable": "^1.7.1",
     "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
+    "webpack-dashboard": "0.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CamAndPineapple/Meteorite-Landings.git"
+    "url": "git+https://github.com/Camru/Meteorite-Landings.git"
   },
   "author": "Camden Rudisill",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CamAndPineapple/Meteorite-Landings/issues"
+    "url": "https://github.com/Camru/Meteorite-Landings/issues"
   },
-  "homepage": "https://github.com/CamAndPineapple/Meteorite-Landings#readme"
+  "homepage": "https://github.com/Camru/Meteorite-Landings#readme"
 }
