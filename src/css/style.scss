@@ -26,6 +26,10 @@ $navy: #62629c;
     width: 70%;
 }
 
+.datamap {
+    color: #252020;
+}
+
 .map-controls {
     width: 14%;
     padding: 30px;
@@ -143,6 +147,14 @@ $navy: #62629c;
     &:focus {
         outline: none;
     }
+}
+
+.count {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
 }
 
 .zoom-reset-btn {

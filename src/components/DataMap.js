@@ -35,7 +35,6 @@ export default class DataMap extends Component {
             responsive: true,
             done: function(datamap) {
                 datamap.svg.call(d3.behavior.zoom().on("zoom", () => comp.setZoom()));
-                comp.props.whenLoaded();
             }
         });
 
@@ -110,6 +109,8 @@ export default class DataMap extends Component {
         });
 
         this.populateMap();
+
+        return filteredByRange;
     }
 
     populateMap () {
@@ -155,12 +156,17 @@ export default class DataMap extends Component {
 
     render () {
         let {data} = this.state;
+        let meteoriteCount = null; 
         
-        if (this.map !== null) this.updateMapData(data);
+        if (this.map !== null) {
+            let filteredData = this.updateMapData(data);
+            meteoriteCount = filteredData.length;
+        }
 
         return (
             <div className="datamap-container">
                 <div className="datamap" ref={ref => this.mapNode = ref}/>
+                {meteoriteCount ? <div className="count">Meteorites: {meteoriteCount}</div> : null}
                 <button className="zoom-reset-btn" onClick={this.resetZoom}>Reset Zoom</button>
             </div>
         );
@@ -170,6 +176,5 @@ export default class DataMap extends Component {
 DataMap.propTypes = {
     controls: PropTypes.object.isRequired,
     data: PropTypes.array.isRequired,
-    isMapLoading: PropTypes.bool.isRequired,
-    whenLoaded: PropTypes.func.isRequired 
+    isMapLoading: PropTypes.bool.isRequired
 }

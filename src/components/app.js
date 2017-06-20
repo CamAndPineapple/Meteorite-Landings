@@ -20,7 +20,6 @@ export default class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSearchClick = this.onSearchClick.bind(this);
     this.onRangeChange = this.onRangeChange.bind(this);
-    this.stopLoading = this.stopLoading.bind(this);
     this.onHitEnter = this.onHitEnter.bind(this);
     this.getState = this.getState.bind(this);
     this.reset = this.reset.bind(this);
@@ -101,10 +100,6 @@ export default class App extends Component {
       });
   }
 
-  stopLoading() {
-    this.setState({isMapLoading: false});
-  }
-
   reset () {
     this.setState(this.getState());
     this.setState({isMapLoading: true});
@@ -150,8 +145,7 @@ export default class App extends Component {
                  name="hello"
                  defaultValue={[0, 100]} 
                  value={[massSizeRange[0], massSizeRange[1]]} 
-                 onChange={this.onRangeChange.bind(this, 'massSizeRange')} 
-                 onAfterChange={this.stopLoading} 
+                 onChange={this.onRangeChange.bind(this, 'massSizeRange')}  
                  pushable={true} />
         </div>
 
@@ -165,8 +159,7 @@ export default class App extends Component {
                  value={[yearRange[0], yearRange[1]]} 
                  allowCross={false} 
                  defaultValue={[0, 100]} 
-                 onChange={this.onRangeChange.bind(this, 'yearRange')} 
-                 onAfterChange={this.stopLoading} />
+                 onChange={this.onRangeChange.bind(this, 'yearRange')} />
         </div>
 
         <div className="control-group">
@@ -174,9 +167,7 @@ export default class App extends Component {
            <p className="input-label">{massScaler}x</p>
           <input type="range" min="0" max="100" step="1" name="massScaler" 
                  value={massScaler} 
-                 onChange={this.onInputChange} 
-                 onMouseUp={this.stopLoading} 
-                 onKeyUp={this.stopLoading} />
+                 onChange={this.onInputChange} />
         </div>
 
         <div className="control-group">
@@ -195,8 +186,7 @@ export default class App extends Component {
             <div className="loading-gif"></div> : 
             <DataMap controls={controls} 
                      data={meteorites} 
-                    isMapLoading={isMapLoading} 
-                    whenLoaded={this.stopLoading} />
+                     isMapLoading={isMapLoading} />
           }
         </div>
       </div>
