@@ -2,8 +2,7 @@
 
 ## Purpose of this Application:
 
-To visually display the size and location of every meteorite
-that has contacted earth.
+To visually display the size and location of every known meteorite landing on earth.
 
 Of course it won't be *every* meteorite, but all of those which the data
 provides.
